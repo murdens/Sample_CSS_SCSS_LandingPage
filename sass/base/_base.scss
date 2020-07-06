@@ -1,0 +1,40 @@
+/*  gloabl reset in all browsers before style, apply to all pseudo elements as well */
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; /* all elements will inherit box-sizing forced with inherit */
+}
+
+html {
+    /* this defines what 1rem is so is left in base*/
+    font-size: 62.5%; 
+    /* root font size 16px, we want 10px so 10/16 %, using % allows user to change size by zoom */
+    /* all other size measures in rems so 1 rem = root size, rem does not work with older browsers <IE9*/
+
+    // do not need phone as tab takes care of it.    
+    // @include respond(phone) {
+    //     font-size: 50%; //
+    // }
+
+    @include respond(tab-land) { //width < 1200px
+        font-size: 56.25%; // 1rem = 9px   9/16 = 50%
+    }
+
+    @include respond(tab) { //width < 900px
+        font-size: 50%; // 1rem = 8px   
+    }
+
+    @include respond(big-desktop) {
+        font-size: 75%; // 1rem - 12px      12/16 = 75%
+    }
+
+}
+
+/* always put font style in body, this is inherited to all childs but can be reset */
+
+body {
+    box-sizing: border-box;
+}
